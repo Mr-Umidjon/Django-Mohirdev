@@ -11,6 +11,15 @@
     <header>
       <h1><a href="{% url 'home' %}">Umidjon Blog</a></h1>
     </header>
+    {% if user.is_authenticated %}
+        <p>Xush kelibsiz, {{ user.username }}</p>
+        <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
+    {% else %}}
+        <p>
+            <a href="{% url 'login' %}">Saytga kirish</a> |
+            <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+        </p>
+    {% endif %}
     <div>
         {% block content %}
         {% endblock content %}
